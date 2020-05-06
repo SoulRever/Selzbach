@@ -1,0 +1,274 @@
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+import model.Kunde;
+
+import javax.swing.JRadioButton;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+import java.awt.Font;
+import java.awt.TextField;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class AnmeldungKunde {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
+	private JLabel lblNewLabel_6;
+	private JLabel lblNewLabel_7;
+	
+	private JRadioButton rdbtnNewRadioButton;
+	private JRadioButton rdbtnNewRadioButton_1;
+	private JRadioButton rdbtnNewRadioButton_2;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_3;
+	
+	private Kunde kunde_1;
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AnmeldungKunde window = new AnmeldungKunde();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AnmeldungKunde() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
+		frame.setBounds(100, 100, 544, 543);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		textField = new JTextField();
+		textField.setBounds(160, 25, 109, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+
+		textField_1 = new JTextField();
+		textField_1.setBounds(160, 56, 109, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+
+		textField_2 = new JTextField();
+		textField_2.setBounds(160, 87, 109, 20);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+
+		textField_3 = new JTextField();
+		textField_3.setBounds(160, 113, 46, 20);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+
+		textField_4 = new JTextField();
+		textField_4.setBounds(160, 144, 109, 20);
+		frame.getContentPane().add(textField_4);
+		textField_4.setColumns(10);
+
+		textField_5 = new JTextField();
+		textField_5.setBounds(160, 175, 109, 20);
+		frame.getContentPane().add(textField_5);
+		textField_5.setColumns(10);
+
+		rdbtnNewRadioButton = new JRadioButton("m\u00E4nnlich");
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				rdbtnNewRadioButton_1.setEnabled(false);
+				rdbtnNewRadioButton_2.setEnabled(false);
+			}
+		});
+		rdbtnNewRadioButton.setBounds(18, 205, 109, 23);
+		frame.getContentPane().add(rdbtnNewRadioButton);
+
+		rdbtnNewRadioButton_1 = new JRadioButton("weiblich");
+		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				rdbtnNewRadioButton.setEnabled(false);
+				rdbtnNewRadioButton_2.setEnabled(false);
+			}
+		});
+		rdbtnNewRadioButton_1.setBounds(160, 205, 109, 23);
+		frame.getContentPane().add(rdbtnNewRadioButton_1);
+
+		rdbtnNewRadioButton_2 = new JRadioButton("divers");
+		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				rdbtnNewRadioButton.setEnabled(false);
+				rdbtnNewRadioButton_1.setEnabled(false);
+			}
+		});
+		rdbtnNewRadioButton_2.setBounds(303, 205, 109, 23);
+		frame.getContentPane().add(rdbtnNewRadioButton_2);
+
+		lblNewLabel = new JLabel("Vorname");
+		lblNewLabel.setBounds(18, 28, 46, 14);
+		frame.getContentPane().add(lblNewLabel);
+
+		lblNewLabel_1 = new JLabel("Nachname");
+		lblNewLabel_1.setBounds(18, 59, 75, 14);
+		frame.getContentPane().add(lblNewLabel_1);
+
+		lblNewLabel_2 = new JLabel("Stra\u00DFe");
+		lblNewLabel_2.setBounds(18, 90, 46, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+
+		lblNewLabel_3 = new JLabel("Stra\u00DFennummer");
+		lblNewLabel_3.setBounds(18, 116, 109, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+
+		lblNewLabel_4 = new JLabel("PLZ");
+		lblNewLabel_4.setBounds(18, 147, 46, 14);
+		frame.getContentPane().add(lblNewLabel_4);
+
+		lblNewLabel_5 = new JLabel("Ort");
+		lblNewLabel_5.setBounds(18, 178, 46, 14);
+		frame.getContentPane().add(lblNewLabel_5);
+
+		JButton btnNewButton = new JButton("Absenden");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				//Soll das andere Fenster aufgerufen werden
+				AusgabeKunde kunde = new AusgabeKunde(textField.getText());
+				kunde.creatAnzeigeKunde();
+				
+			}
+				
+		});
+		btnNewButton.setBounds(303, 470, 109, 23);
+		frame.getContentPane().add(btnNewButton);
+
+		lblNewLabel_6 = new JLabel("Kunde Anlegen");
+		lblNewLabel_6.setBackground(Color.WHITE);
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.ITALIC, 13));
+		lblNewLabel_6.setBounds(112, 0, 118, 20);
+		frame.getContentPane().add(lblNewLabel_6);
+		
+		lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setBounds(18, 280, 251, 14);
+		frame.getContentPane().add(lblNewLabel_7);
+		
+		btnNewButton_1 = new JButton("Zur\u00FCcksetzen");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+				textField_5.setText("");
+				
+				rdbtnNewRadioButton.setEnabled(true);
+				rdbtnNewRadioButton.setSelected(false);
+				rdbtnNewRadioButton_1.setEnabled(true);
+				rdbtnNewRadioButton_1.setSelected(true);
+				rdbtnNewRadioButton_2.setEnabled(true);
+				rdbtnNewRadioButton_2.setSelected(true);
+				
+			}
+		});
+		btnNewButton_1.setBounds(18, 380, 109, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("neuKunde");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				//pruefen Sie ob und welcher radiobutton geklickt wurde, falls es der erste ist
+				//wird "maennlich" gespeicher, falls es der zweite ist wird "weiblich" gespeichert
+				// und falls es der dritte ist wird "divers" gespeichert
+				//Dieser Wert aus dem Speicherplatz wird als letzter Wert bei new Kunde(.....,Wert)
+				// gesetzt
+				
+				btnNewButton_3.setEnabled(true);
+				
+				String geschlecht;
+				
+				if(rdbtnNewRadioButton.isSelected())
+				{
+					geschlecht="männlich";
+				}
+				
+				else if (rdbtnNewRadioButton_1.isSelected())
+				{
+					geschlecht="weiblich";
+				}
+				else if (rdbtnNewRadioButton_2.isSelected())
+				{
+					geschlecht="divers";
+				}
+				else
+				{
+					geschlecht="nicht angegeben";
+				}
+				
+				
+				kunde_1 = new Kunde(textField.getText(), textField_1.getText(), textField_2.getText(),textField_3.getText(),textField_4.getText(),
+				textField_5.getText(), geschlecht);
+			}
+		});
+		btnNewButton_2.setBounds(18, 312, 109, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		btnNewButton_3 = new JButton("KundeAnzeigen");
+		btnNewButton_3.setEnabled(false);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				Uebersicht uebersicht_1 = new Uebersicht(kunde_1.getVorName(), kunde_1.getNachName(), kunde_1.getStrasse(), kunde_1.getStrassenNummer(),
+						kunde_1.getPLZ(), kunde_1.getOrt(),kunde_1.getKundenNr());
+				
+				uebersicht_1.creatAnzeigeUebersicht();
+				
+				uebersicht_1.ordern(kunde_1.bestellen());
+				
+				uebersicht_1.setStruktur(kunde_1.getGeschlecht());
+				
+				
+			}
+		});
+		btnNewButton_3.setBounds(18, 346, 109, 23);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		}
+}
